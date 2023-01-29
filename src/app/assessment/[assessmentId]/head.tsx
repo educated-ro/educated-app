@@ -1,7 +1,11 @@
 import { getAssessmentMetadata } from '@/services/assesment'
 
 export default async function Head({ params: { assessmentId } }: { params: { assessmentId: string } }) {
-  const { header, description } = await getAssessmentMetadata(assessmentId)
+  const results = await getAssessmentMetadata(assessmentId)
+
+  if (!results) return null
+
+  const { header, description } = results
 
   return (
     <>

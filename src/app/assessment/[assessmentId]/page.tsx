@@ -5,5 +5,7 @@ export default async function Assessment({ params }: { params: { assessmentId: s
   const { assessmentId } = params
   const sections = await getAssessmentSections(assessmentId)
 
+  if (!sections) return null
+
   return <SectionContainer sections={sections} />
 }
