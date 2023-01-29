@@ -5,29 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a1383e49-5934-44b9-96be-c0684f9a2cf2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/LOGO-3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mwN-ITK1f.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/assessment/[assessmentId]/error.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/assessment/[assessmentId]/head.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/assessment/[assessmentId]/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/assessment/[assessmentId]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/AssessmentBody.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Header.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Image.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/modules/Assessment/AssesmentQuestions/Fields.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/modules/Assessment/AssesmentQuestions/QuestionMedia.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/modules/Assessment/AssesmentQuestions/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/modules/Assessment/Requirement/RequirementText.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/modules/Assessment/SectionContainer.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hooks/useScrollDirection.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/assesment/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/instance.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/types/assessment/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +86,7 @@
       <option name="presentableId" value="Default" />
       <updated>1674733227031</updated>
       <workItem from="1674733228076" duration="4706000" />
-      <workItem from="1674738477658" duration="66995000" />
+      <workItem from="1674738477658" duration="67184000" />
     </task>
     <servers />
   </component>
