@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a1383e49-5934-44b9-96be-c0684f9a2cf2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/LOGO-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/mwN-ITK1f.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/assessment/[assessmentId]/error.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/assessment/[assessmentId]/head.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/assessment/[assessmentId]/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/assessment/[assessmentId]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/AssessmentBody.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Header.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Image.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/modules/Assessment/AssesmentQuestions/Fields.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/modules/Assessment/AssesmentQuestions/QuestionMedia.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/modules/Assessment/AssesmentQuestions/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/modules/Assessment/Requirement/RequirementText.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/modules/Assessment/SectionContainer.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/hooks/useScrollDirection.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/assesment/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/services/instance.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types/assessment/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2KrWYI29U2es9oOVJnLv6xZFuzR" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/Users/sebastian.simionescu/Projects/educated-test-generator",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "node",
+    "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "/Users/sebastian.simionescu/Projects/educated-test-generator/node_modules/prettier",
+    "settings.editor.selected.configurable": "editor.preferences.appearance",
+    "ts.external.directory.path": "/Users/sebastian.simionescu/Projects/educated-test-generator/node_modules/typescript/lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/modules/Assessment/Requirement" />
+      <recent name="$PROJECT_DIR$/public" />
+      <recent name="$PROJECT_DIR$/src/components/modules/Assessment" />
+      <recent name="$PROJECT_DIR$/src/app/assessment/[assessmentId]" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a1383e49-5934-44b9-96be-c0684f9a2cf2" name="Changes" comment="" />
+      <created>1674733227031</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1674733227031</updated>
+      <workItem from="1674733228076" duration="4706000" />
+      <workItem from="1674738477658" duration="66995000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
