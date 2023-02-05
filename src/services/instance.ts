@@ -27,7 +27,7 @@ const StrapiInstance = async (req: NextApiRequest | undefined) => {
   }
 
   const token = await getToken({ req, secret })
-  return StrapiInstanceToken(token)
+  return StrapiInstanceToken(token?.jwt as any)
 }
 
 export default async function RequestHandler<T>(apiFn: (instance: AxiosInstance) => Promise<AxiosResponse<any, T>>, req: NextApiRequest | undefined = undefined): Promise<AxiosResponse<T> | null> {
