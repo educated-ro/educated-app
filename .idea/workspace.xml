@@ -5,54 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a1383e49-5934-44b9-96be-c0684f9a2cf2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/ICON.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/LOGO-2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/assessments/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/homework/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/schedule/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/settings/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Layout/GeneralLayout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Layout/SidebarLink.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Layout/contants.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Layout/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Layout/types.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Layout/utils/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/NotLoggedIn.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/modules/Assessment/AssessmentTabs/AssessmentsTabs.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/ui/Navbar/UserAvatar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/api/auth/[...nextauth].ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/api/strapi/[collection].ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/Assessment.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/services/AssessmentsSession.service.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/auth-session.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/LOGO-3.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/LOGO-3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/next.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/thirteen.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/vercel.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/assessment/[assessmentId]/error.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/assessment/[assessmentId]/head.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/assessment/[assessmentId]/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/assessments/[assessmentId]/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/assessment/[assessmentId]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/assessments/[assessmentId]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/head.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/head.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AssessmentBody.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AssessmentBody.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Image.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Image.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/Assessment/AssesmentQuestions/Fields.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/Assessment/AssesmentQuestions/Fields.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/Assessment/AssesmentQuestions/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/Assessment/AssesmentQuestions/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/Assessment/SectionContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/Assessment/SectionContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/api/hello.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/assesment/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/instance.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/instance.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/assessment/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/assessment/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +91,7 @@
       <option name="presentableId" value="Default" />
       <updated>1674733227031</updated>
       <workItem from="1674733228076" duration="4706000" />
-      <workItem from="1674738477658" duration="176358000" />
+      <workItem from="1674738477658" duration="176777000" />
     </task>
     <servers />
   </component>
