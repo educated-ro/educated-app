@@ -21,7 +21,7 @@ export default function QuestionWrapper(props: QuestionWrapperProps) {
             <RequirementText content={requirement} />
             <div>
               {subItems.map((item, id) => (
-                <QuestionWrapper key={item.requirement} position={String.fromCharCode(97 + id)} {...item} id={`sub-${item.id}`} showBorders={false} />
+                <QuestionWrapper key={item.requirement} position={String.fromCharCode(97 + id)} {...item} id={`studentAnswer.sub-${item.id}`} showBorders={false} />
               ))}
             </div>
           </div>

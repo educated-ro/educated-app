@@ -4,11 +4,17 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    domains: ['127.0.0.1'],
+    domains: ['127.0.0.1', 'cms.educated.ro', 'lh3.googleusercontent.com'],
     remotePatterns: [
       {
         protocol: 'http',
         hostname: '127.0.0.1',
+        port: '',
+        pathname: '/uploads/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cms.educated.ro',
         port: '',
         pathname: '/uploads/**',
       },

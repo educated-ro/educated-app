@@ -10,7 +10,7 @@ import { SectionItem } from '@/types/assessment'
 export default function QuestionFields({ id, type, options }: Partial<SectionItem>) {
   const { register } = useFormContext()
 
-  const inputProps = register(`answer.pb-${id}`)
+  const inputProps = register(`studentAnswer.pb-${id}`)
 
   switch (type) {
     case 'one-option': {

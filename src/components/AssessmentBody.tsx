@@ -1,38 +1,41 @@
 'use client'
 
+import { ReactNode, useCallback, useEffect } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
-import { ReactNode } from 'react'
-import Header from '@/components/Header'
+import { debounce } from 'lodash'
+import axios from 'axios'
+import { SessionProvider } from 'next-auth/react'
 
 type AssessmentBodyProps = {
   children: ReactNode
-  started: boolean
-  timer: Date | null
+  session: any
+  token: any
 }
-export default function AssessmentBody({ children, started }: AssessmentBodyProps) {
-  const methods = useForm()
-  const { handleSubmit } = methods
+export default function AssessmentBody({ children, session, token }: AssessmentBodyProps) {
+  const methods = useForm({
+    defaultValues: {
+      ...session[0],
+    },
+  })
 
-  if (!started)
-    return (
-      <>
-        <Header />
-        <p className='mt-40'>Not started yed</p>
-      </>
-    )
+  const debouncedSave = useCallback(
+    debounce(
+      value => axios.put('/api/strapi/save-session', value),
+
+      500,
+    ),
+    [],
+  )
+
+  const { handleSubmit, watch } = methods
+
+  useEffect(() => {
+    const subscription = watch(value => debouncedSave(value))
+    return () => subscription.unsubscribe()
+  }, [watch])
 
   return (
-    <>
-      <Header
-        renderRightSide={() => (
-          <div className='flex flex-1'>
-            <div className='flex flex-1 items-center justify-center'>02:10:25</div>
-            <button className='text-white px-4 py-1.5 bg-blue-700 rounded-md text-md' onClick={handleSubmit(data => console.log(data))}>
-              {started ? 'Finish' : 'Start'}
-            </button>
-          </div>
-        )}
-      />
+    <SessionProvider session={token}>
       <FormProvider {...methods}>
         <div className='my-18 mx-24'>
           <div className='flex'>
@@ -44,6 +47,6 @@ export default function AssessmentBody({ children, started }: AssessmentBodyProp
           {children}
         </div>
       </FormProvider>
-    </>
+    </SessionProvider>
   )
 }

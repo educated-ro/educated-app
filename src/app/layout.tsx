@@ -1,18 +1,34 @@
+import Layout from '@/components/Layout'
+import NotLoggedIn from '@/components/NotLoggedIn'
+import { getSessionUser } from '@/utils/auth-session'
+import { ReactNode } from 'react'
 import './globals.css'
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+type RootLayoutProps = {
+  children: ReactNode
+}
+
+function BaseHTML({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
+    <html lang='en'>
       <head />
       <body>{children}</body>
     </html>
+  )
+}
+export default async function RootLayout({ children }: RootLayoutProps) {
+  const user = await getSessionUser()
+
+  if (!user)
+    return (
+      <BaseHTML>
+        <NotLoggedIn />
+      </BaseHTML>
+    )
+
+  return (
+    <BaseHTML>
+      <Layout user={user}>{children}</Layout>
+    </BaseHTML>
   )
 }

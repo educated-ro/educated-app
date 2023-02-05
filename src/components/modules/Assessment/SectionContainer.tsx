@@ -3,6 +3,7 @@
 import React from 'react'
 import { AssessmentSection } from '@/types/assessment'
 import QuestionWrapper from '@/components/modules/Assessment/AssesmentQuestions'
+import { Alert } from 'flowbite-react'
 
 type SectionContainerProps = {
   sections: AssessmentSection[]

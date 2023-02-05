@@ -39,6 +39,18 @@ type Assessment = {
   description: string
   metadata: AssessmentMetadata
   sections: AssessmentSection[]
+  publishedAt: Date
 }
 
-export type { AssessmentMetadata, AssessmentSection, AssessmentOption, Assessment, SectionItemTypes, SectionItem }
+type AssessmentSession = {
+  student: any
+  studentAnswer: any
+  assessment: Assessment
+  status: 'not-started' | 'in-progress' | 'finished' | 'under-evaluation'
+  submitted: boolean
+  rightAnswer: any
+  sessionId: string
+  finishedAt: Date
+}
+
+export type { AssessmentMetadata, AssessmentSection, AssessmentOption, Assessment, SectionItemTypes, SectionItem, AssessmentSession }
