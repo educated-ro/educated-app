@@ -2,6 +2,7 @@ import SectionContainer from '@/components/modules/Assessment/SectionContainer'
 import { getSessionUser } from '@/utils/auth-session'
 import AssessmentSessionService from '@/services/AssessmentsSession.service'
 
+export const dynamic = 'force-dynamic'
 export default async function Assessment({ params }: { params: { assessmentId: string } }) {
   const { assessmentId } = params
   const user = await getSessionUser()
