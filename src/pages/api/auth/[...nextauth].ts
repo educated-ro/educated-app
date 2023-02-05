@@ -3,6 +3,7 @@ import Auth0Provider from 'next-auth/providers/auth0'
 import { JWT } from 'next-auth/jwt'
 import axios from 'axios'
 import { DefaultUser } from 'next-auth/core/types'
+import { headers } from 'next/headers'
 
 type SessionOutput = Session & {
   access_token: JWT
@@ -38,7 +39,12 @@ export const authOptions: AuthOptions = {
           const response = await axios.get(`${process.env.API_URL}/auth/${account?.provider}/callback?access_token=${account?.access_token}&populate=deep`)
           const data = response.data
 
-          const userRoleResponse = await axios.get(`${process.env.API_URL}/users/${data.user.id}?populate=*`)
+          const userRoleResponse = await axios.get(`${process.env.API_URL}/users/${data.user.id}?populate=deep`, {
+            headers: {
+              Authorization: `Bearer ${data?.jwt}`,
+            },
+          })
+
           const role = userRoleResponse?.data?.role.name
 
           token.user = {
