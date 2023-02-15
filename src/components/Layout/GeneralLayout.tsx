@@ -1,16 +1,37 @@
 'use client'
 
-import { ReactNode } from 'react'
-import { usePathname } from 'next/navigation'
+import * as React from 'react'
+import { styled, useTheme, Theme, CSSObject } from '@mui/material/styles'
+import Box from '@mui/material/Box'
+import Drawer from '@mui/material/Drawer'
+import AppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar'
+import Toolbar from '@mui/material/Toolbar'
+import List from '@mui/material/List'
+import CssBaseline from '@mui/material/CssBaseline'
+import Typography from '@mui/material/Typography'
+import Divider from '@mui/material/Divider'
+import IconButton from '@mui/material/IconButton'
+import MenuIcon from '@mui/icons-material/Menu'
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
+import ChevronRightIcon from '@mui/icons-material/ChevronRight'
+import ListItem from '@mui/material/ListItem'
+import ListItemButton from '@mui/material/ListItemButton'
+import ListItemIcon from '@mui/material/ListItemIcon'
+import ListItemText from '@mui/material/ListItemText'
+import InboxIcon from '@mui/icons-material/MoveToInbox'
+import MailIcon from '@mui/icons-material/Mail'
 import { SidebarLink } from '@/components/Layout/types'
-import UserAvatar from '@/components/ui/Navbar/UserAvatar'
-import 'flowbite'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import ImageContainer from '@/components/Image'
+import { Avatar, Badge, Menu, MenuItem, Tooltip } from '@mui/material'
+import { signOut } from 'next-auth/react'
+import SettingsIcon from '@mui/icons-material/Settings'
+import LogoutIcon from '@mui/icons-material/Logout'
 
 export type GeneralLayoutProps = {
   menu: SidebarLink[]
-  children: ReactNode
+  children: React.ReactNode
 
   user: {
     name: string
@@ -27,68 +48,136 @@ const isLinkActive = (pathname: string | null, href: string) => {
   return pathname === href
 }
 
+const drawerWidth = 280
+
 export default function GeneralLayout({ user, menu, children }: GeneralLayoutProps) {
+  const theme = useTheme()
   const pathname = usePathname()
 
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
+  const open = Boolean(anchorEl)
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget)
+  }
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
+
   return (
-    <>
-      <nav className='fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700'>
-        <div className='px-3 py-3 lg:px-5 lg:pl-3'>
-          <div className='flex items-center justify-between'>
-            <div className='flex items-center justify-start'>
-              <button
-                data-drawer-target='logo-sidebar'
-                data-drawer-toggle='logo-sidebar'
-                aria-controls='logo-sidebar'
-                type='button'
-                className='inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600'
-              >
-                <span className='sr-only'>Open sidebar</span>
-                <svg className='w-6 h-6' aria-hidden='true' fill='currentColor' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'>
-                  <path
-                    clipRule='evenodd'
-                    fillRule='evenodd'
-                    d='M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z'
-                  ></path>
-                </svg>
-              </button>
-
-              <a href='https://flowbite.com' className='flex md:mr-24'>
-                <ImageContainer width={160} height={45} src='/LOGO-3.png' alt='educated logo' />
-              </a>
-            </div>
-            <div className='flex items-center'>
-              <UserAvatar image={user.image} email={user.email} name={user.name} />
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      <aside
-        id='logo-sidebar'
-        className='fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700'
-        aria-label='Sidebar'
+    <Box sx={{ display: 'flex', backgroundColor: '#F7FBFF', minHeight: '100vh' }}>
+      <CssBaseline />
+      <Drawer
+        variant='permanent'
+        sx={{
+          width: drawerWidth,
+          flexShrink: 0,
+          [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box', borderWidth: 0, boxShadow: '0px 4.28278px 32.1209px rgba(0, 98, 220, 0.05)', px: 1 },
+        }}
       >
-        <div className='h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800 pt-24'>
-          <ul className='space-y-2'>
-            {menu.map((m, i) => (
-              <li key={`${m.text}-${i}`}>
-                <Link
-                  href={m.href}
-                  className={`flex items-center p-3 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-[#1B96EB] hover:text-white transition-all dark:hover:bg-gray-700 ${
-                    isLinkActive(pathname, m.href) ? 'bg-[#1B96EB] text-white' : ''
-                  }`}
+        <Toolbar sx={{ mt: 2, mb: 6 }}>
+          <ImageContainer width={160} height={47} src='/LOGO-3.png' alt='Educated Logo' />
+        </Toolbar>
+        <Box sx={{ overflow: 'auto' }}>
+          <List sx={{ my: 1 }}>
+            {menu.map((item, index) => (
+              <ListItem key={item.href}>
+                <ListItemButton
+                  selected={isLinkActive(pathname, item.href)}
+                  component={Link}
+                  href={item.href}
+                  sx={{
+                    borderRadius: 3,
+                    color: '#556B86',
+                    my: 1,
+                    '&.Mui-selected': {
+                      color: '#fff',
+                      background: 'linear-gradient(89.63deg, #0965DC 0.2%, #05BCDC 124.75%)',
+                    },
+                    '&:hover': {
+                      color: '#fff',
+                      background: 'linear-gradient(89.63deg, #0965DC 0.2%, #05BCDC 124.75%)',
+                    },
+                  }}
                 >
-                  <span className='text-xl'>{m.icon}</span>
-                  <span className='ml-3 text-md'>{m.text}</span>
-                </Link>
-              </li>
+                  <ListItemIcon sx={{ color: 'inherit' }}>{item.icon}</ListItemIcon>
+                  <ListItemText
+                    primary={item.text}
+                    primaryTypographyProps={{
+                      sx: {
+                        fontWeight: 500,
+                      },
+                    }}
+                  />
+                </ListItemButton>
+              </ListItem>
             ))}
-          </ul>
-        </div>
-      </aside>
-
-      <div className='mt-16 sm:ml-64 bg-neutral-50 h-100% min-h-screen'>{children}</div>
-    </>
+          </List>
+        </Box>
+      </Drawer>
+      <Box component='main' sx={{ flexGrow: 1, mx: 4 }}>
+        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', my: 3, alignItems: 'center', mb: 10 }}>
+          <Box>
+            <Typography variant='h6' sx={{ fontWeight: 600 }}>
+              Assessments
+            </Typography>
+            <Typography>See your personal assessments here!</Typography>
+          </Box>
+          <Tooltip title='Account settings'>
+            <IconButton onClick={handleClick} size='small' sx={{ ml: 2 }} aria-controls={open ? 'account-menu' : undefined} aria-haspopup='true' aria-expanded={open ? 'true' : undefined}>
+              <Avatar sx={{ width: 32, height: 32 }} src={user.image} />
+            </IconButton>
+          </Tooltip>
+          <Menu
+            anchorEl={anchorEl}
+            id='account-menu'
+            open={open}
+            onClose={handleClose}
+            onClick={handleClose}
+            PaperProps={{
+              elevation: 0,
+              sx: {
+                overflow: 'visible',
+                filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                mt: 1.5,
+                '& .MuiAvatar-root': {
+                  width: 32,
+                  height: 32,
+                  ml: -0.5,
+                  mr: 1,
+                },
+                '&:before': {
+                  content: '""',
+                  display: 'block',
+                  position: 'absolute',
+                  top: 0,
+                  right: 14,
+                  width: 10,
+                  height: 10,
+                  bgcolor: 'background.paper',
+                  transform: 'translateY(-50%) rotate(45deg)',
+                  zIndex: 0,
+                },
+              },
+            }}
+            transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+            anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+          >
+            <MenuItem onClick={handleClose}>
+              <ListItemIcon>
+                <SettingsIcon fontSize='small' />
+              </ListItemIcon>
+              Settings
+            </MenuItem>
+            <MenuItem onClick={() => signOut()}>
+              <ListItemIcon>
+                <LogoutIcon fontSize='small' />
+              </ListItemIcon>
+              Logout
+            </MenuItem>
+          </Menu>
+        </Toolbar>
+        <Box sx={{ mx: 3 }}>{children}</Box>
+      </Box>
+    </Box>
   )
 }

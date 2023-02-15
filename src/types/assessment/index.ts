@@ -51,6 +51,7 @@ type AssessmentSession = {
   rightAnswer: any
   sessionId: string
   finishedAt: Date
+  id: string
 }
 
 export type { AssessmentMetadata, AssessmentSection, AssessmentOption, Assessment, SectionItemTypes, SectionItem, AssessmentSession }
