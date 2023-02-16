@@ -1,7 +1,7 @@
 'use client'
 
 import axios from 'axios'
-import { Box, Card, CardContent, CardHeader, Typography } from '@mui/material'
+import { Box, Grid, Typography } from '@mui/material'
 import { Assessment, AssessmentSession } from '@/types/assessment'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
@@ -10,6 +10,7 @@ import Tab from '@mui/material/Tab'
 import TabContext from '@mui/lab/TabContext'
 import TabList from '@mui/lab/TabList'
 import TabPanel from '@mui/lab/TabPanel'
+import AssessmentCard from '@/components/modules/Assessment/AssessmentTabs/AssessmentCard.'
 
 type AssessmentsTabsProps = {
   userId: string
@@ -115,21 +116,19 @@ export default function AssessmentsTabs({ userId, takenAssessments, assessments 
         </TabContext>
       </Box>
 
-      {!value
-        ? assessments.map(assessment => (
-            <Card key={assessment.id} onClick={() => handleRowClick(assessment.id)} sx={{ cursor: 'pointer', my: 3 }}>
-              <CardHeader title={assessment.name} />
-              <CardContent>{assessment.metadata?.description}</CardContent>
-            </Card>
-          ))
-        : filteredAssessment.map(({ sessionId, assessment }) => (
-            <Link href={`/assessments/${sessionId}`} key={sessionId}>
-              <Card key={assessment.id} sx={{ my: 3 }}>
-                <CardHeader title={assessment.name} />
-                <CardContent>{assessment.metadata?.description}</CardContent>
-              </Card>
-            </Link>
-          ))}
+      <Grid container spacing={4}>
+        {!value
+          ? assessments.map(assessment => (
+              <Grid item key={assessment.id} md={3}>
+                <AssessmentCard onClick={handleRowClick} {...assessment} text='Începe' />
+              </Grid>
+            ))
+          : filteredAssessment.map(({ sessionId, assessment }) => (
+              <Grid item key={assessment.id} md={3}>
+                <AssessmentCard {...assessment} href={`/assessments/${sessionId}`} text='Continuă' />
+              </Grid>
+            ))}
+      </Grid>
     </Box>
   )
 }

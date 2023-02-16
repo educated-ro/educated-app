@@ -9,7 +9,7 @@ type ImageContainerProps = {
 }
 export default function ImageContainer({ width, height, src, alt, className = '' }: ImageContainerProps) {
   return (
-    <div className='relative' style={{ width: `${width}px`, height: `${height}px` }}>
+    <div style={{ width: `${width}px`, height: `${height}px`, position: 'relative' }}>
       <Image
         src={src}
         alt={alt}

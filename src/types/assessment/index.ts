@@ -40,6 +40,7 @@ type Assessment = {
   metadata: AssessmentMetadata
   sections: AssessmentSection[]
   publishedAt: Date
+  createdAt: Date
 }
 
 type AssessmentSession = {

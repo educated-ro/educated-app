@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a1383e49-5934-44b9-96be-c0684f9a2cf2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/modules/Assessment/AssessmentTabs/AssessmentCard..tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Image.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Image.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/modules/Assessment/AssessmentTabs/AssessmentsTabs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/Assessment/AssessmentTabs/AssessmentsTabs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/theme.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/assessment/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/assessment/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -92,7 +97,7 @@
       <option name="presentableId" value="Default" />
       <updated>1674733227031</updated>
       <workItem from="1674733228076" duration="4706000" />
-      <workItem from="1674738477658" duration="220600000" />
+      <workItem from="1674738477658" duration="227972000" />
     </task>
     <servers />
   </component>
