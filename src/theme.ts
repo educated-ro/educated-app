@@ -5,6 +5,9 @@ export const theme = createTheme({
     primary: {
       main: '#0868DC',
     },
+    background: {
+      default: '#F7FBFF',
+    },
   },
   typography: {
     fontFamily: ['Poppins', 'sans-serif'].join(','),

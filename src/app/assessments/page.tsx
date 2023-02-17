@@ -11,7 +11,7 @@ export default async function AssessmentsPage() {
 
   if (!(sessionsResponse || assessmentsResponse))
     return (
-      <div className='w-full'>
+      <div>
         <h2>Something went wrong</h2>
       </div>
     )
@@ -21,9 +21,5 @@ export default async function AssessmentsPage() {
 
   const filterAssessments = assessments.filter(({ id }) => !find(takenAssessments, { assessment: { id } }))
 
-  return (
-    <div className='w-full'>
-      <AssessmentsTabs userId={user!.id} takenAssessments={takenAssessments} assessments={filterAssessments} />
-    </div>
-  )
+  return <AssessmentsTabs userId={user!.id} takenAssessments={takenAssessments} assessments={filterAssessments} />
 }
