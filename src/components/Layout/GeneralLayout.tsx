@@ -75,7 +75,7 @@ export default function GeneralLayout({ user, menu, children }: GeneralLayoutPro
         </Box>
       </AppDrawer>
 
-      <Box component='main' sx={{ flexGrow: 1, mx: { sm: 4, xs: 0 } }}>
+      <Box component='main' sx={{ flexGrow: 1, mx: { sm: 4, xs: 0 }, maxWidth: '100%' }}>
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', my: 3, alignItems: 'center', mb: 10 }}>
           <Box sx={{ fontWeight: 600, display: { xs: 'none', sm: 'block' } }}>
             <Typography variant='h6'>Assessments</Typography>

@@ -73,6 +73,7 @@ export default function AssessmentsTabs({ userId, takenAssessments, assessments 
               onChange={handleChange}
               aria-label='lab API tabs example'
               TabIndicatorProps={{ sx: { display: 'none' } }}
+              variant='scrollable'
               sx={{
                 '& button': {
                   fontWeight: 500,
