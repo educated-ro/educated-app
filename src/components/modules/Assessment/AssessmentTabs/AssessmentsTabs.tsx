@@ -119,12 +119,12 @@ export default function AssessmentsTabs({ userId, takenAssessments, assessments 
       <Grid container spacing={4}>
         {!value
           ? assessments.map(assessment => (
-              <Grid item key={assessment.id} md={3}>
+              <Grid item key={assessment.id} md={3} xs={12}>
                 <AssessmentCard onClick={handleRowClick} {...assessment} text='Începe' />
               </Grid>
             ))
           : filteredAssessment.map(({ sessionId, assessment }) => (
-              <Grid item key={assessment.id} md={3}>
+              <Grid item key={sessionId} md={3} xs={12}>
                 <AssessmentCard {...assessment} href={`/assessments/${sessionId}`} text='Continuă' />
               </Grid>
             ))}
