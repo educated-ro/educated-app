@@ -1,20 +1,28 @@
 'use client'
 
-import { loggedInStudentMenu } from '@/components/Layout/contants'
 import GeneralLayout from '@/components/Layout/GeneralLayout'
 import { ReactNode } from 'react'
 import { ThemeProvider } from '@mui/material'
 import { theme } from '@/theme'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { SessionProvider } from 'next-auth/react'
+import { Session } from 'next-auth'
 
-export default function Layout({ user, children }: { children: ReactNode; user: any }) {
-  if (user.role === 'Student')
-    return (
-      <ThemeProvider theme={theme}>
-        <GeneralLayout user={user} menu={loggedInStudentMenu}>
-          {children}
-        </GeneralLayout>
-      </ThemeProvider>
-    )
+type GeneralLayoutProps = {
+  session: Session
+  children: ReactNode
+}
 
-  return null
+const queryClient = new QueryClient()
+
+export default function Layout({ session, children }: GeneralLayoutProps) {
+  return (
+    <ThemeProvider theme={theme}>
+      <QueryClientProvider client={queryClient}>
+        <SessionProvider session={session}>
+          <GeneralLayout>{children}</GeneralLayout>
+        </SessionProvider>
+      </QueryClientProvider>
+    </ThemeProvider>
+  )
 }

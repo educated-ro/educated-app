@@ -1,6 +1,6 @@
 import Layout from '@/components/Layout'
 import NotLoggedIn from '@/components/NotLoggedIn'
-import { getSessionUser } from '@/utils/auth-session'
+import { getSessionData } from '@/utils/auth-session'
 import { ReactNode } from 'react'
 import './globals.css'
 
@@ -17,9 +17,9 @@ function BaseHTML({ children }: RootLayoutProps) {
   )
 }
 export default async function RootLayout({ children }: RootLayoutProps) {
-  const user = await getSessionUser()
+  const session = await getSessionData()
 
-  if (!user)
+  if (!session)
     return (
       <BaseHTML>
         <NotLoggedIn />
@@ -28,7 +28,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
 
   return (
     <BaseHTML>
-      <Layout user={user}>{children}</Layout>
+      <Layout session={session}>{children}</Layout>
     </BaseHTML>
   )
 }

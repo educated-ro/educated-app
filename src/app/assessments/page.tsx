@@ -21,5 +21,5 @@ export default async function AssessmentsPage() {
 
   const filterAssessments = assessments.filter(({ id }) => !find(takenAssessments, { assessment: { id } }))
 
-  return <AssessmentsTabs userId={user!.id} takenAssessments={takenAssessments} assessments={filterAssessments} />
+  return <AssessmentsTabs takenAssessments={takenAssessments} assessments={filterAssessments} />
 }

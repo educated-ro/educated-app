@@ -3,49 +3,67 @@ import { SectionItem } from '@/types/assessment'
 import QuestionMedia from '@/components/modules/Assessment/AssesmentQuestions/QuestionMedia'
 import QuestionFields from '@/components/modules/Assessment/AssesmentQuestions/Fields'
 import RequirementText from '@/components/modules/Assessment/Requirement/RequirementText'
+import { Box, Stack, Typography } from '@mui/material'
 
 type QuestionWrapperProps = SectionItem & {
   position: number | string
   showBorders?: boolean
+  isLastItem?: boolean
 }
 
 export default function QuestionWrapper(props: QuestionWrapperProps) {
-  const { requirement, position, subItems, type, media, showBorders = true, ...others } = props
+  const { requirement, position, subItems, type, media, showBorders = true, isLastItem = false, ...others } = props
 
-  if (type === 'with-sub-items' && subItems) {
+  if (type === 'with-sub-items') {
+    if (!subItems) return null
+
     return (
-      <div className='w-full bg-white p-6'>
-        <div className='flex my-4'>
-          <div className='text-gray-900 font-bold mx-6'>{position}.</div>
-          <div className='text-justify flex-1'>
-            <RequirementText content={requirement} />
-            <div>
-              {subItems.map((item, id) => (
-                <QuestionWrapper key={item.requirement} position={String.fromCharCode(97 + id)} {...item} id={`studentAnswer.sub-${item.id}`} showBorders={false} />
-              ))}
-            </div>
-          </div>
+      <Box sx={{ backgroundColor: '#fff', p: 4, ...(!isLastItem ? { borderBottom: `1px solid ${showBorders ? '#EBEFF3' : '#fff'}` } : { boxShadow: '0px 5.44477px 15px rgba(0, 0, 0, 0.02)' }) }}>
+        <Stack direction='row'>
+          <Stack direction='row' gap={1}>
+            <Typography color='#0868DC' fontWeight={700} fontSize={18}>
+              {position}.
+            </Typography>
+            <Box flexGrow={1} sx={{ textAlign: 'justify' }}>
+              <RequirementText content={requirement} />
+              <Box>
+                {subItems.map((item, id) => (
+                  <QuestionWrapper key={item.requirement} position={String.fromCharCode(97 + id)} {...item} id={`studentAnswer.sub-${item.id}`} showBorders={false} />
+                ))}
+              </Box>
+            </Box>
 
-          <QuestionMedia media={media} />
-        </div>
-      </div>
+            <QuestionMedia media={media} />
+          </Stack>
+        </Stack>
+      </Box>
     )
   }
 
   return (
-    <div className={`bg-white ${showBorders ? 'shadow shadow-xs shadow-gray-100 rounded-md' : 'my-6'} p-6`}>
-      <div className={`flex ${showBorders && 'px-6'}`}>
-        <div className='flex mb-6'>
-          <div className={`text-gray-900 font-bold ${showBorders && 'mr-6'}`}>{position}.</div>
-          <div className='text-justify flex-1'>
+    <Box
+      sx={{
+        ...(!isLastItem
+          ? { borderBottom: `1px solid ${showBorders ? '#EBEFF3' : '#fff'}` }
+          : { borderBottomLeftRadius: 12, borderBottomRightRadius: 12, boxShadow: '0px 5.44477px 15px rgba(0, 0, 0, 0.02)' }),
+        backgroundColor: '#fff',
+      }}
+    >
+      <Stack direction='row' sx={{ px: showBorders ? 4 : 0, py: 3 }}>
+        <Stack direction='row' gap={1} alignItems='baseline'>
+          <Typography color='#0868DC' fontWeight={700} fontSize={18}>
+            {position}.
+          </Typography>
+          <Box flexGrow={1} sx={{ textAlign: 'justify' }}>
             <RequirementText content={requirement} />
-          </div>
-        </div>
+          </Box>
+        </Stack>
         <QuestionMedia media={media} />
-      </div>
-      <div className={`${showBorders && 'px-6'}`}>
+      </Stack>
+
+      <Box sx={{ px: showBorders ? 6 : 3, pb: 3 }}>
         <QuestionFields type={type} {...others} />
-      </div>
-    </div>
+      </Box>
+    </Box>
   )
 }

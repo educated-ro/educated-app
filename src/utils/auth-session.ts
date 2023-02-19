@@ -1,6 +1,6 @@
 import { getServerSession } from 'next-auth/next'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
-import { Session } from 'next-auth'
+import { Session } from '@/types/next-auth'
 import { DefaultUser } from 'next-auth/core/types'
 import { JWT } from 'next-auth/jwt'
 

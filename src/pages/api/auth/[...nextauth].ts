@@ -2,8 +2,6 @@ import NextAuth, { AuthOptions, Session } from 'next-auth'
 import Auth0Provider from 'next-auth/providers/auth0'
 import { JWT } from 'next-auth/jwt'
 import axios from 'axios'
-import { DefaultUser } from 'next-auth/core/types'
-import { headers } from 'next/headers'
 
 type SessionOutput = Session & {
   access_token: JWT

@@ -1,55 +1,38 @@
 'use client'
 
-import * as React from 'react'
-import { styled, useTheme, Theme, CSSObject } from '@mui/material/styles'
 import Box from '@mui/material/Box'
-import Drawer from '@mui/material/Drawer'
-import AppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar'
+
 import Toolbar from '@mui/material/Toolbar'
-import List from '@mui/material/List'
+
 import CssBaseline from '@mui/material/CssBaseline'
 import Typography from '@mui/material/Typography'
-import Divider from '@mui/material/Divider'
+
 import IconButton from '@mui/material/IconButton'
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft'
-import ChevronRightIcon from '@mui/icons-material/ChevronRight'
-import ListItem from '@mui/material/ListItem'
-import ListItemButton from '@mui/material/ListItemButton'
-import ListItemIcon from '@mui/material/ListItemIcon'
-import ListItemText from '@mui/material/ListItemText'
-import InboxIcon from '@mui/icons-material/MoveToInbox'
-import MailIcon from '@mui/icons-material/Mail'
-import { SidebarLink } from '@/components/Layout/types'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+
 import ImageContainer from '@/components/Image'
-import { Avatar, Badge, Menu, MenuItem, Stack, Tooltip } from '@mui/material'
-import { signOut } from 'next-auth/react'
-import SettingsIcon from '@mui/icons-material/Settings'
-import LogoutIcon from '@mui/icons-material/Logout'
+import { Stack } from '@mui/material'
+
 import DrawerMenu from '@/components/Layout/GeneralLayout/DrawerMenu'
 import { AppDrawer } from '@/components/Layout/GeneralLayout/Drawer'
-import useMediaQuery from '@mui/material/useMediaQuery'
-import { useState } from 'react'
+import { useState, ReactNode } from 'react'
 import CloseIcon from '@mui/icons-material/Close'
 import MenuIcon from '@mui/icons-material/Menu'
 import UserAvatarButton from './GeneralLayout/UserAvatarButton'
+import Menus from '@/components/Layout/contants'
+import { useSession } from 'next-auth/react'
+import useUserSession from '@/hooks/useUserSession'
 
 export type GeneralLayoutProps = {
-  menu: SidebarLink[]
-  children: React.ReactNode
-
-  user: {
-    name: string
-    email: string
-    image: string
-  }
+  children: ReactNode
 }
 
-const drawerWidth = 280
-
-export default function GeneralLayout({ user, menu, children }: GeneralLayoutProps) {
+export default function GeneralLayout({ children }: GeneralLayoutProps) {
   const [openDrawer, setOpenDrawer] = useState(false)
+  const { role, image } = useUserSession()
+
+  const menu = Menus.get(role)
+
+  if (!menu) return null
 
   const handleToggleDrawer = () => setOpenDrawer(prev => !prev)
 
@@ -90,7 +73,7 @@ export default function GeneralLayout({ user, menu, children }: GeneralLayoutPro
             <ImageContainer width={160} height={47} src='/LOGO-3.png' alt='Educated Logo' />
           </Box>
 
-          <UserAvatarButton image={user.image} />
+          <UserAvatarButton image={image} />
         </Toolbar>
         <Box sx={{ mx: 3 }}>{children}</Box>
       </Box>

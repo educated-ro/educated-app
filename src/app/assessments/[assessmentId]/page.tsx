@@ -1,6 +1,7 @@
 import SectionContainer from '@/components/modules/Assessment/SectionContainer'
 import { getSessionUser } from '@/utils/auth-session'
 import AssessmentSessionService from '@/services/AssessmentsSession.service'
+import AssessmentBody from '@/components/AssessmentBody'
 
 export const dynamic = 'force-dynamic'
 export default async function Assessment({ params }: { params: { assessmentId: string } }) {
@@ -17,9 +18,11 @@ export default async function Assessment({ params }: { params: { assessmentId: s
     )
   }
 
-  const {
-    assessment: { sections },
-  } = assessmentObject.data[0]
+  const { assessment } = assessmentObject.data[0]
 
-  return <SectionContainer sections={sections} />
+  return (
+    <AssessmentBody session={assessmentObject.data[0]}>
+      <SectionContainer sections={assessment.sections} />
+    </AssessmentBody>
+  )
 }

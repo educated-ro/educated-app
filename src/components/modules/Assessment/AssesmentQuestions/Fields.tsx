@@ -1,5 +1,6 @@
-import { useFormContext } from 'react-hook-form'
+import { Controller, useFormContext } from 'react-hook-form'
 import { SectionItem } from '@/types/assessment'
+import { FormControlLabel, Radio, RadioGroup, TextField } from '@mui/material'
 // import Editor from 'react-simple-code-editor'
 // import Prism from 'prismjs'
 // import 'prismjs/components/prism-clike'
@@ -8,23 +9,26 @@ import { SectionItem } from '@/types/assessment'
 // import { highlight, languages } from 'prismjs'
 
 export default function QuestionFields({ id, type, options }: Partial<SectionItem>) {
-  const { register } = useFormContext()
+  const { register, control } = useFormContext()
 
-  const inputProps = register(`studentAnswer.pb-${id}`)
+  const inputName = `studentAnswer.pb-${id}`
+  const inputProps = register(inputName)
 
   switch (type) {
     case 'one-option': {
-      return (
-        <div className='flex justify-between'>
-          {options &&
-            options.map((option, i) => (
-              <div key={option.value} className='flex gap-3 items-center'>
-                <input type='radio' value={option.value} className='block checked:bg-blue-500' {...inputProps} />
-                <label className='block'>{option.label ?? option.value}</label>
-              </div>
-            ))}
-        </div>
-      )
+      return options ? (
+        <Controller
+          name={inputName}
+          control={control}
+          render={({ field }) => (
+            <RadioGroup row {...field} sx={{ justifyContent: 'space-between' }}>
+              {options.map(option => (
+                <FormControlLabel key={option.value} value={option.value} control={<Radio />} label={option.label ?? option.value} />
+              ))}
+            </RadioGroup>
+          )}
+        />
+      ) : null
     }
 
     //TBD
@@ -33,15 +37,15 @@ export default function QuestionFields({ id, type, options }: Partial<SectionIte
     }
 
     case 'code': {
-      return <textarea placeholder='here' className='p-3 w-full border border-gray-300' {...inputProps}></textarea>
+      return <Controller name={inputName} control={control} render={({ field }) => <TextField {...field} fullWidth multiline value={field.value ?? ''} />} />
     }
 
     case 'short-answer': {
-      return <input type='text' placeholder='here' className='w-full p-3 border border-gray-300' {...inputProps} />
+      return <Controller name={inputName} control={control} render={({ field }) => <TextField {...field} fullWidth value={field.value ?? ''} />} />
     }
 
     case 'long-answer': {
-      return <textarea placeholder='here' className='mx-5 p-3 border border-gray-300' {...inputProps}></textarea>
+      return <Controller name={inputName} control={control} render={({ field }) => <TextField {...field} fullWidth multiline value={field.value ?? ''} />} />
     }
 
     default: {

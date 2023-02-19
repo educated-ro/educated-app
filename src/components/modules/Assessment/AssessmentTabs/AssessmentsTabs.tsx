@@ -1,7 +1,7 @@
 'use client'
 
 import axios from 'axios'
-import { Box, Grid, Typography } from '@mui/material'
+import { Box, Button, Grid, Typography } from '@mui/material'
 import { Assessment, AssessmentSession } from '@/types/assessment'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
@@ -9,17 +9,19 @@ import { SyntheticEvent, useState } from 'react'
 import Tab from '@mui/material/Tab'
 import TabContext from '@mui/lab/TabContext'
 import TabList from '@mui/lab/TabList'
-import TabPanel from '@mui/lab/TabPanel'
 import AssessmentCard from '@/components/modules/Assessment/AssessmentTabs/AssessmentCard.'
+import { useMutation } from 'react-query'
+import { filterSessionsByStatus, filterSessionsByStatusLength } from '@/utils/assessments'
+import useUserSession from '@/hooks/useUserSession'
 
 type AssessmentsTabsProps = {
-  userId: string
   takenAssessments: AssessmentSession[]
   assessments: Assessment[]
 }
 
-export default function AssessmentsTabs({ userId, takenAssessments, assessments }: AssessmentsTabsProps) {
+export default function AssessmentsTabs({ takenAssessments, assessments }: AssessmentsTabsProps) {
   const router = useRouter()
+  const { id: userId } = useUserSession()
 
   const [value, setValue] = useState('')
 
@@ -27,19 +29,14 @@ export default function AssessmentsTabs({ userId, takenAssessments, assessments 
     setValue(newValue)
   }
 
-  const handleRowClick = (assessmentId: string) => {
-    axios
-      .post('/api/strapi/new-session', {
-        assessmentId,
-        userId,
-      })
-      .then(res => {
-        router.refresh()
-        router.push(`/assessments/${res.data}`)
-      })
-  }
+  const { isLoading: newSessionLoading, mutate: handleNewSession } = useMutation((assessmentId: string) => axios.post('/api/strapi/new-session', { userId, assessmentId }), {
+    onSuccess: res => {
+      router.refresh()
+      router.push(`/assessments/${res.data}`)
+    },
+  })
 
-  const filteredAssessment = takenAssessments.filter(({ status }) => status === value)
+  const filteredAssessment = filterSessionsByStatus(takenAssessments, value)
 
   const tabs = [
     {
@@ -50,17 +47,17 @@ export default function AssessmentsTabs({ userId, takenAssessments, assessments 
     {
       name: 'In progress',
       value: 'in-progress',
-      count: takenAssessments.filter(({ status }) => status === 'in-progress').length,
+      count: filterSessionsByStatusLength(takenAssessments, 'in-progress'),
     },
     {
       name: 'Under evaluation',
       value: 'under-evaluation',
-      count: takenAssessments.filter(({ status }) => status === 'under-evaluation').length,
+      count: filterSessionsByStatusLength(takenAssessments, 'under-evaluation'),
     },
     {
       name: 'Finished',
       value: 'finished',
-      count: takenAssessments.filter(({ status }) => status === 'finished').length,
+      count: filterSessionsByStatusLength(takenAssessments, 'finished'),
     },
   ]
 
@@ -120,13 +117,40 @@ export default function AssessmentsTabs({ userId, takenAssessments, assessments 
       <Grid container spacing={4}>
         {!value
           ? assessments.map(assessment => (
-              <Grid item key={assessment.id} md={3} xs={12}>
-                <AssessmentCard onClick={handleRowClick} {...assessment} text='Începe' />
+              <Grid item key={assessment.id} md={6} xs={12} sm={6} lg={3}>
+                <AssessmentCard {...assessment}>
+                  <Button
+                    variant='contained'
+                    disableElevation
+                    sx={{
+                      color: '#fff',
+                    }}
+                    color='primary'
+                    size='small'
+                    onClick={() => handleNewSession(assessment.id)}
+                  >
+                    Incepe
+                  </Button>
+                </AssessmentCard>
               </Grid>
             ))
           : filteredAssessment.map(({ sessionId, assessment }) => (
-              <Grid item key={sessionId} md={3} xs={12}>
-                <AssessmentCard {...assessment} href={`/assessments/${sessionId}`} text='Continuă' />
+              <Grid item key={sessionId} md={6} xs={12} sm={6} lg={3}>
+                <AssessmentCard {...assessment}>
+                  <Button
+                    variant='contained'
+                    disableElevation
+                    sx={{
+                      color: '#fff',
+                    }}
+                    color='primary'
+                    size='small'
+                    component={Link}
+                    href={`/assessments/${sessionId}`}
+                  >
+                    Continua
+                  </Button>
+                </AssessmentCard>
               </Grid>
             ))}
       </Grid>

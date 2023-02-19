@@ -16,6 +16,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       res.status(200).json({})
       break
     }
+
+    case 'change-assessment-status': {
+      await AssessmentsSessionService.changeAssessmentStatus(req)
+      res.status(200).json({})
+      break
+    }
   }
 }
 

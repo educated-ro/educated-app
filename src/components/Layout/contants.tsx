@@ -3,7 +3,7 @@ import AssessmentIcon from '@mui/icons-material/Assessment'
 import HomeWorkIcon from '@mui/icons-material/HomeWork'
 import ScheduleIcon from '@mui/icons-material/Schedule'
 
-export const loggedInStudentMenu = [
+const loggedInStudentMenu = [
   {
     text: 'Dashboard',
     icon: <DashboardIcon />,
@@ -25,3 +25,23 @@ export const loggedInStudentMenu = [
     href: '/schedule',
   },
 ]
+
+const loggedInTrainerMenu = [
+  {
+    text: 'Dashboard',
+    icon: <DashboardIcon />,
+    href: '/',
+  },
+  {
+    text: 'Assessments',
+    icon: <AssessmentIcon />,
+    href: '/assessments',
+  },
+]
+
+const Menus = new Map([
+  ['Student', loggedInStudentMenu],
+  ['Trainer', loggedInTrainerMenu],
+])
+
+export default Menus

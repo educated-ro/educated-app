@@ -4,19 +4,26 @@ import { ReactNode, useCallback, useEffect } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 import { debounce } from 'lodash'
 import axios from 'axios'
-import { SessionProvider } from 'next-auth/react'
+import Box from '@mui/material/Box'
+import { Button, Stack, Typography } from '@mui/material'
+import { AssessmentSession } from '@/types/assessment'
 
 type AssessmentBodyProps = {
   children: ReactNode
-  session: any
-  token: any
+  session: AssessmentSession
 }
-export default function AssessmentBody({ children, session, token }: AssessmentBodyProps) {
-  const methods = useForm({
+export default function AssessmentBody({ children, session }: AssessmentBodyProps) {
+  const methods = useForm<AssessmentSession>({
     defaultValues: {
-      ...session[0],
+      ...session,
     },
   })
+  const { watch, handleSubmit } = methods
+
+  useEffect(() => {
+    const subscription = watch(value => debouncedSave(value))
+    return () => subscription.unsubscribe()
+  }, [watch])
 
   const debouncedSave = useCallback(
     debounce(
@@ -27,26 +34,29 @@ export default function AssessmentBody({ children, session, token }: AssessmentB
     [],
   )
 
-  const { handleSubmit, watch } = methods
-
-  useEffect(() => {
-    const subscription = watch(value => debouncedSave(value))
-    return () => subscription.unsubscribe()
-  }, [watch])
+  const handleAssessmentSubmit = (data: AssessmentSession) => axios.put('/api/strapi/change-assessment-status', { ...data, newStatus: 'under-evaluation' })
 
   return (
-    <SessionProvider session={token}>
-      <FormProvider {...methods}>
-        <div className='my-18 mx-24'>
-          <div className='flex'>
-            <div className=''></div>
+    <FormProvider {...methods}>
+      <Stack sx={{ py: 3, px: 4, backgroundColor: '#fff', boxShadow: '0px 5.44477px 15px rgba(0, 0, 0, 0.02)', borderRadius: 3 }} direction='row' justifyContent='space-between'>
+        <Typography fontWeight={600}>Maths midterms exam </Typography>
+      </Stack>
+      <Box sx={{ mt: 4 }}>{children}</Box>
 
-            {/*TODO: add user name and inputt*/}
-            <div className=''></div>
-          </div>
-          {children}
-        </div>
-      </FormProvider>
-    </SessionProvider>
+      <Box display='flex' justifyContent='flex-end' my={4}>
+        <Button
+          variant='contained'
+          disableElevation
+          sx={{
+            color: '#fff',
+          }}
+          color='primary'
+          size='medium'
+          onClick={handleSubmit(handleAssessmentSubmit)}
+        >
+          Submit assessment
+        </Button>
+      </Box>
+    </FormProvider>
   )
 }

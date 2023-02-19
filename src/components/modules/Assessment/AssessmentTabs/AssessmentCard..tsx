@@ -3,14 +3,13 @@ import { Card, CardActions, CardContent, CardHeader, Button, Typography, Box, St
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
 import NotesIcon from '@mui/icons-material/Notes'
 import moment from 'moment'
+import { ReactNode } from 'react'
 
 type AssessmentCardProps = Assessment & {
-  onClick?: (id: string) => void
-  href?: string
-  text: string
+  children: ReactNode
 }
 
-export default function AssessmentCard({ onClick, href, text, ...assessment }: AssessmentCardProps) {
+export default function AssessmentCard({ children, ...assessment }: AssessmentCardProps) {
   return (
     <Card
       sx={{ my: 3, boxShadow: ' 0px 5.44477px 15px rgba(0, 0, 0, 0.02)', p: 2, borderRadius: 3, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}
@@ -37,21 +36,7 @@ export default function AssessmentCard({ onClick, href, text, ...assessment }: A
           </Box>
         </Stack>
       </CardContent>
-      <CardActions sx={{ px: 2 }}>
-        <Button
-          variant='contained'
-          disableElevation
-          sx={{
-            color: '#fff',
-          }}
-          color='primary'
-          size='small'
-          href={!onClick ? href : ''}
-          onClick={onClick ? () => onClick(assessment.id) : undefined}
-        >
-          {text}
-        </Button>
-      </CardActions>
+      <CardActions sx={{ px: 2 }}>{children}</CardActions>
     </Card>
   )
 }

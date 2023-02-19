@@ -40,6 +40,19 @@ const AssessmentSessionService = {
       })
     }, req)
   },
+
+  changeAssessmentStatus: (req: NextApiRequest) => {
+    return RequestHandler<AssessmentSession>(instance => {
+      const { id, newStatus, ...sessionProps } = req.body
+
+      return instance.put(`${ASSESSMENTS_SESSIONS_PATH}/${id}`, {
+        data: {
+          ...sessionProps,
+          status: newStatus,
+        },
+      })
+    }, req)
+  },
 }
 
 export default AssessmentSessionService
