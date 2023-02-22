@@ -29,7 +29,7 @@ export default function AssessmentBody({ children, session }: AssessmentBodyProp
     return () => subscription.unsubscribe()
   }, [watch])
 
-  const handleAssessmentSubmit = (data: AssessmentSession) => {
+  const handleAssessmentSubmit = () => {
     setIsDialogOpen(true)
   }
 
@@ -51,7 +51,7 @@ export default function AssessmentBody({ children, session }: AssessmentBodyProp
           }}
           color='primary'
           size='medium'
-          onClick={handleSubmit(handleAssessmentSubmit)}
+          onClick={handleAssessmentSubmit}
         >
           Trimite
         </Button>

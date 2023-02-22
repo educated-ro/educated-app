@@ -21,8 +21,6 @@ export default function ChangeStatusDialog({ open, onClose }: ChangeStatusDialog
 
   const { handleChangeStatus, isChangeStatusLoading } = useAssessmentActions()
 
-  if (!dialogText) return null
-
   const handleConfirm = async (data: AssessmentSession) => {
     try {
       await handleChangeStatus(data)
@@ -37,10 +35,10 @@ export default function ChangeStatusDialog({ open, onClose }: ChangeStatusDialog
   return (
     <Dialog open={open} onClose={onClose} aria-labelledby='alert-dialog-title' aria-describedby='alert-dialog-description'>
       <DialogTitle id='alert-dialog-title'>Finalizeaza</DialogTitle>
-      <DialogContent>{dialogText.message}</DialogContent>
+      <DialogContent>{dialogText?.message ?? 'Esti pe cale sa termini examenul. Esti sigur ca este totul corect ?'}</DialogContent>
       <DialogActions>
         <Button onClick={onClose}>Inapoi</Button>
-        <LoadingButton onClick={handleSubmit(data => handleConfirm(data))} autoFocus disabled={dialogText.isButtonDisabled} loading={isChangeStatusLoading}>
+        <LoadingButton onClick={handleSubmit(data => handleConfirm(data))} autoFocus disabled={dialogText?.isButtonDisabled ?? false} loading={isChangeStatusLoading}>
           Continua
         </LoadingButton>
       </DialogActions>

@@ -5,42 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a1383e49-5934-44b9-96be-c0684f9a2cf2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/modules/Assessments/AsessemntUnderEvaluation.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/modules/Assessments/AssessmentBody/Questions/QuestionButtons.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/modules/Assessments/AssessmentGrid.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/modules/Assessments/AssessmentsLayout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/modules/Assessments/ChangeStatusDialog.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/modules/Assessments/StudentAssessmentsView/StudentAssessmentsTabs.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/modules/Assessments/StudentAssessmentsView/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/modules/Assessments/TrainerAssessmentView/TrainerAssessmentsTabs.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/modules/Assessments/TrainerAssessmentView/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/modules/Assessments/useAssessmentActions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postcss.config.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/assessments/[assessmentId]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/assessments/[assessmentId]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/assessments/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/assessments/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/head.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/head.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AssessmentBody.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/Assessments/AssessmentBody/AssessmentBody.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Image.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/Image.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/GeneralLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Layout/GeneralLayout/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/GeneralLayout/LoggedInContext.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Layout/utils/index.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/NotLoggedIn.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NotLoggedIn.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/Assessment/AssesmentQuestions/Fields.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/Assessments/AssessmentBody/Questions/Fields.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/Assessment/AssesmentQuestions/QuestionMedia.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/Assessments/AssessmentBody/Questions/QuestionMedia.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/Assessment/AssesmentQuestions/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/Assessments/AssessmentBody/Questions/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/Assessment/AssessmentTabs/AssessmentCard..tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/Assessments/AssessmentCard..tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/Assessment/AssessmentTabs/AssessmentsTabs.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/Assessment/Requirement/RequirementText.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/Assessments/AssessmentBody/Questions/RequirementText.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/modules/Assessment/SectionContainer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/Assessments/AssessmentBody/SectionContainer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/api/strapi/[collection].ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/api/strapi/[collection].ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/Assessment.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/Assessment.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/AssessmentsSession.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/AssessmentsSession.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/instance.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/instance.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/types/assessment/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/assessment/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/assessments.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/assessments.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/auth-session.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/auth-session.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/Assessments/AssessmentBody/AssessmentBody.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/Assessments/AssessmentBody/AssessmentBody.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/modules/Assessments/ChangeStatusDialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/modules/Assessments/ChangeStatusDialog.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +93,7 @@
       <option name="presentableId" value="Default" />
       <updated>1674733227031</updated>
       <workItem from="1674733228076" duration="4706000" />
-      <workItem from="1674738477658" duration="316479000" />
+      <workItem from="1674738477658" duration="317663000" />
     </task>
     <servers />
   </component>
