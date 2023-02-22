@@ -5,7 +5,9 @@ export const filterSessionsByStatus = (session: AssessmentSession[], value: Reco
 
 export const filterSessionsByStatusLength = (session: AssessmentSession[], value: Record<'status', AssessmentSession> | string) => filterSessionsByStatus(session, value).length
 
-export const hasRightsToCorrectAssessment = (role: string) => {
+export const hasRightsToCorrectAssessment = (role: string, status: string) => {
+  if (status === 'finished') return true
+
   const ROLES = ['Trainer']
 
   return ROLES.includes(role)

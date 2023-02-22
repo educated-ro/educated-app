@@ -26,7 +26,7 @@ export default function QuestionActions({ id }: QuestionActionsProps) {
 
   const user = useUserSession()
 
-  if (!hasRightsToCorrectAssessment(user.role)) return null
+  if (!hasRightsToCorrectAssessment(user.role, status)) return null
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget)

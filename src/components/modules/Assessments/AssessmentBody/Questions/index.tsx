@@ -5,18 +5,15 @@ import QuestionFields from '@/components/modules/Assessments/AssessmentBody/Ques
 import RequirementText from '@/components/modules/Assessments/AssessmentBody/Questions/RequirementText'
 import { Box, Stack, Typography } from '@mui/material'
 import QuestionButtons from './QuestionButtons'
-import useUserSession from '@/hooks/useUserSession'
 
 type QuestionWrapperProps = SectionItem & {
   position: number | string
   showBorders?: boolean
   isLastItem?: boolean
-  disabled?: boolean
 }
 
 export default function QuestionWrapper(props: QuestionWrapperProps) {
-  const { requirement, position, subItems, type, media, showBorders = true, isLastItem = false, disabled = false, ...others } = props
-  const { role } = useUserSession()
+  const { requirement, position, subItems, type, media, showBorders = true, isLastItem = false, ...others } = props
 
   if (type === 'with-sub-items') {
     if (!subItems) return null
@@ -77,7 +74,7 @@ export default function QuestionWrapper(props: QuestionWrapperProps) {
         <QuestionFields type={type} {...others} />
       </Box>
 
-      {role === 'Trainer' ? <QuestionButtons id={others.id} /> : null}
+      <QuestionButtons id={others.id} />
     </Box>
   )
 }

@@ -4,10 +4,10 @@ import { FormControlLabel, Grid, Radio, RadioGroup, TextField } from '@mui/mater
 import useUserSession from '@/hooks/useUserSession'
 
 export default function QuestionFields({ id, type, options }: Partial<SectionItem>) {
-  const { control } = useFormContext()
+  const { control, getValues } = useFormContext()
   const { role } = useUserSession()
 
-  const isDisabled = role === 'Trainer'
+  const isDisabled = role === 'Trainer' || getValues('status') === 'finished'
 
   const inputName = `studentAnswer.pb-${id}.value`
 
