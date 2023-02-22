@@ -5,7 +5,7 @@ const ASSESSMENTS_PATH = '/assessments'
 
 const AssessmentService = {
   getAllAssessments: async function () {
-    return RequestHandler<Assessment[]>(instance => instance.get(ASSESSMENTS_PATH))
+    return RequestHandler<Assessment[]>(instance => instance.get(`${ASSESSMENTS_PATH}?populate=deep`))
   },
 }
 

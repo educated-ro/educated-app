@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography'
 
 import IconButton from '@mui/material/IconButton'
 
-import ImageContainer from '@/components/Image'
+import ImageContainer from '@/components/ui/Image'
 import { Stack } from '@mui/material'
 
 import DrawerMenu from '@/components/Layout/GeneralLayout/DrawerMenu'
@@ -17,7 +17,7 @@ import { AppDrawer } from '@/components/Layout/GeneralLayout/Drawer'
 import { useState, ReactNode } from 'react'
 import CloseIcon from '@mui/icons-material/Close'
 import MenuIcon from '@mui/icons-material/Menu'
-import UserAvatarButton from './GeneralLayout/UserAvatarButton'
+import UserAvatarButton from './UserAvatarButton'
 import Menus from '@/components/Layout/contants'
 import { useSession } from 'next-auth/react'
 import useUserSession from '@/hooks/useUserSession'

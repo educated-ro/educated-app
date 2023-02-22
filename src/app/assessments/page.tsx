@@ -1,25 +1,23 @@
-import AssessmentsTabs from '@/components/modules/Assessment/AssessmentTabs/AssessmentsTabs'
-import AssessmentService from '@/services/Assessment.service'
-import AssessmentSessionService from '@/services/AssessmentsSession.service'
+import StudentAssessmentsView from '@/components/modules/Assessments/StudentAssessmentsView'
+import TrainerAssessmentsView from '@/components/modules/Assessments/TrainerAssessmentView'
 import { getSessionUser } from '@/utils/auth-session'
-import { find } from 'lodash'
 
 export default async function AssessmentsPage() {
-  const user = await getSessionUser()
+  const { role, id } = (await getSessionUser()) as any
 
-  const [sessionsResponse, assessmentsResponse] = await Promise.all([AssessmentSessionService.getAllAssessmentsByStudentId(user!.id), AssessmentService.getAllAssessments()])
+  switch (role) {
+    case 'Student': {
+      //@ts-ignore
+      return <StudentAssessmentsView userId={id} />
+    }
 
-  if (!(sessionsResponse || assessmentsResponse))
-    return (
-      <div>
-        <h2>Something went wrong</h2>
-      </div>
-    )
+    case 'Trainer': {
+      //@ts-ignore
+      return <TrainerAssessmentsView userId={id} />
+    }
 
-  const takenAssessments = sessionsResponse!.data
-  const assessments = assessmentsResponse!.data
-
-  const filterAssessments = assessments.filter(({ id }) => !find(takenAssessments, { assessment: { id } }))
-
-  return <AssessmentsTabs takenAssessments={takenAssessments} assessments={filterAssessments} />
+    default: {
+      return null
+    }
+  }
 }

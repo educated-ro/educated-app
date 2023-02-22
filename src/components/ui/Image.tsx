@@ -10,15 +10,7 @@ type ImageContainerProps = {
 export default function ImageContainer({ width, height, src, alt, className = '' }: ImageContainerProps) {
   return (
     <div style={{ width: `${width}px`, height: `${height}px`, position: 'relative' }}>
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        className={className}
-        sizes='(max-width: 768px) 100vw,
-              (max-width: 1200px) 50vw,
-              33vw'
-      />
+      <Image src={src} alt={alt} fill className={className} />
     </div>
   )
 }

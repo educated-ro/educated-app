@@ -1,6 +1,6 @@
 'use client'
 
-import ImageContainer from '@/components/Image'
+import ImageContainer from '@/components/ui/Image'
 import { BeatLoader } from 'react-spinners'
 import { signIn } from 'next-auth/react'
 import { useState } from 'react'

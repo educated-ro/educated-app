@@ -10,8 +10,17 @@ const AssessmentSessionService = {
     return RequestHandler<AssessmentSession[]>(instance => instance.get(`${ASSESSMENTS_SESSIONS_PATH}?populate=deep&filters[student][id][$eq]=${studentId}`))
   },
 
-  getAssessmentSessionById: (sessionId: string, studentId: string) => {
-    return RequestHandler<AssessmentSession[]>(instance => instance.get(`${ASSESSMENTS_SESSIONS_PATH}?populate=deep&filters[student][id]=${studentId}&filters[sessionId]=${sessionId}`))
+  getAllAssessmentsByTrainerId: (studentId: string) => {
+    return RequestHandler<AssessmentSession[]>(instance => instance.get(`${ASSESSMENTS_SESSIONS_PATH}?populate=deep&filters[trainer][id][$eq]=${studentId}`))
+  },
+
+  getAssessmentSessionById: (sessionId: string, studentId: string, role: string) => {
+    const key = role === 'Trainer' ? 'trainer' : 'student'
+    return RequestHandler<AssessmentSession[]>(instance => instance.get(`${ASSESSMENTS_SESSIONS_PATH}?populate=deep&filters[sessionId]=${sessionId}`))
+  },
+
+  getAllAssessmentsWithStatus: (status: string) => {
+    return RequestHandler<AssessmentSession[]>(instance => instance.get(`${ASSESSMENTS_SESSIONS_PATH}?populate=deep&filters[status]=${status}`))
   },
 
   createNewSession: (req: NextApiRequest) => {
@@ -43,12 +52,24 @@ const AssessmentSessionService = {
 
   changeAssessmentStatus: (req: NextApiRequest) => {
     return RequestHandler<AssessmentSession>(instance => {
-      const { id, newStatus, ...sessionProps } = req.body
+      const { id, ...sessionProps } = req.body
 
       return instance.put(`${ASSESSMENTS_SESSIONS_PATH}/${id}`, {
         data: {
           ...sessionProps,
-          status: newStatus,
+        },
+      })
+    }, req)
+  },
+
+  claimSession: (req: NextApiRequest) => {
+    return RequestHandler<AssessmentSession>(instance => {
+      const { user, ...sessionProps } = req.body
+
+      return instance.put(`${ASSESSMENTS_SESSIONS_PATH}/${sessionProps.id}`, {
+        data: {
+          ...sessionProps,
+          trainer: user.id,
         },
       })
     }, req)

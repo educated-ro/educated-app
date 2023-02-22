@@ -22,6 +22,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       res.status(200).json({})
       break
     }
+
+    case 'claim-session': {
+      await AssessmentsSessionService.claimSession(req)
+      res.status(200).json(req.body.sessionId)
+      break
+    }
   }
 }
 

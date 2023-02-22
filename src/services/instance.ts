@@ -30,11 +30,18 @@ const StrapiInstance = async (req: NextApiRequest | undefined) => {
   return StrapiInstanceToken(token?.jwt as any)
 }
 
-export default async function RequestHandler<T>(apiFn: (instance: AxiosInstance) => Promise<AxiosResponse<any, T>>, req: NextApiRequest | undefined = undefined): Promise<AxiosResponse<T> | null> {
+export default async function RequestHandler<T>(
+  apiFn: ((instance: AxiosInstance) => Promise<AxiosResponse<any, T>>) | null,
+  req: NextApiRequest | undefined = undefined,
+): Promise<AxiosResponse<T> | null> {
   const instance = await StrapiInstance(req)
   try {
-    const response = await apiFn(instance)
-    return response.data
+    if (apiFn) {
+      const response = await apiFn(instance)
+      return response.data
+    }
+
+    return null
   } catch (e: any) {
     console.log(e.response.data.error)
     return null

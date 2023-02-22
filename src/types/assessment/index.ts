@@ -53,6 +53,16 @@ type AssessmentSession = {
   sessionId: string
   finishedAt: Date
   id: string
+  trainer: any
 }
 
-export type { AssessmentMetadata, AssessmentSection, AssessmentOption, Assessment, SectionItemTypes, SectionItem, AssessmentSession }
+type AssessmentSessionComment = {
+  user: {
+    name: string
+    image: string
+  }
+  date: Date
+  comment: string
+}
+
+export type { AssessmentMetadata, AssessmentSection, AssessmentOption, Assessment, SectionItemTypes, SectionItem, AssessmentSession, AssessmentSessionComment }

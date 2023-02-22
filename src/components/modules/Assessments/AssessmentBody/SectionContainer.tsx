@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { AssessmentSection } from '@/types/assessment'
-import QuestionWrapper from '@/components/modules/Assessment/AssesmentQuestions'
+import QuestionWrapper from '@/components/modules/Assessments/AssessmentBody/Questions'
 import { Box, Stack, Typography } from '@mui/material'
 
 type SectionContainerProps = {
@@ -13,7 +13,7 @@ const SectionHeader = ({ title, points, description }: Partial<AssessmentSection
   if (!title && !points && !description) return null
 
   return (
-    <Box sx={{ p: 4, backgroundColor: '#fff', boxShadow: '0px 5.44477px 15px rgba(0, 0, 0, 0.02)', borderTopLeftRadius: 12, borderTopRightRadius: 12, borderBottom: '1px solid #EBEFF3' }}>
+    <Box sx={{ p: 3.5, backgroundColor: '#fff', boxShadow: '0px 5.44477px 15px rgba(0, 0, 0, 0.02)', borderTopLeftRadius: 12, borderTopRightRadius: 12, borderBottom: '1px solid #EBEFF3' }}>
       <Stack direction='row' justifyContent='space-between'>
         <Typography fontWeight={600}>{title}</Typography>
         <Typography fontWeight={600} color='#0967DC'>
