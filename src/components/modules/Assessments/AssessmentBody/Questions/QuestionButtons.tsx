@@ -18,6 +18,9 @@ type QuestionActionsProps = {
 export default function QuestionActions({ id }: QuestionActionsProps) {
   const { setValue, watch } = useFormContext()
 
+  const status = watch('status')
+  const areButtonsDisabled = status === 'finished'
+
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null)
   const input = useRef<HTMLInputElement | null>(null)
 
@@ -62,7 +65,9 @@ export default function QuestionActions({ id }: QuestionActionsProps) {
         <Stack direction='row' gap={3}>
           <IconButton
             size='small'
+            disabled={areButtonsDisabled}
             onClick={() => setValue(`studentAnswer.pb-${id}.state`, 'correct')}
+            classes={{ disabled: '' }}
             sx={{
               width: 35,
               height: 35,
@@ -71,10 +76,19 @@ export default function QuestionActions({ id }: QuestionActionsProps) {
                     backgroundColor: '#5AC450',
                     color: '#fff',
                     borderColor: '#5AC450',
+                    '&.Mui-disabled': {
+                      backgroundColor: '#5AC450',
+                      color: '#fff',
+                      borderColor: '#5AC450',
+                    },
                   }
                 : {
                     backgroundColor: '#E5EBF2',
                     color: '#67809E',
+                    '&.Mui-disabled': {
+                      backgroundColor: '#E5EBF2',
+                      color: '#67809E',
+                    },
                   }),
               '&:hover': {
                 backgroundColor: '#5AC450',
@@ -89,7 +103,9 @@ export default function QuestionActions({ id }: QuestionActionsProps) {
 
           <IconButton
             size='small'
+            disabled={areButtonsDisabled}
             onClick={() => setValue(`studentAnswer.pb-${id}.state`, 'wrong')}
+            classes={{ disabled: 'MUI-x' }}
             sx={{
               width: 35,
               height: 35,
@@ -98,10 +114,19 @@ export default function QuestionActions({ id }: QuestionActionsProps) {
                     backgroundColor: '#EC6560',
                     color: '#fff',
                     borderColor: '#EC6560',
+                    '&.Mui-disabled': {
+                      backgroundColor: '#EC6560',
+                      color: '#fff',
+                      borderColor: '#EC6560',
+                    },
                   }
                 : {
                     backgroundColor: '#E5EBF2',
                     color: '#67809E',
+                    '&.Mui-disabled': {
+                      backgroundColor: '#E5EBF2',
+                      color: '#67809E',
+                    },
                   }),
               '&:hover': {
                 backgroundColor: '#D82F20',
@@ -137,6 +162,7 @@ export default function QuestionActions({ id }: QuestionActionsProps) {
         <Box display='flex' justifyContent='flex-end' flexGrow={1} width={100}>
           <TextField
             variant='standard'
+            disabled={areButtonsDisabled}
             sx={{ '&.MuiTextField-root': { width: 61 } }}
             label='Punctaj'
             value={watch(`studentAnswer.pb-${id}.score`) ?? ''}

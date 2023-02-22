@@ -22,7 +22,7 @@ export default function AssessmentBody({ children, session }: AssessmentBodyProp
 
   const { handleUpdateSession } = useAssessmentActions()
 
-  const { watch, handleSubmit } = methods
+  const { watch } = methods
 
   useEffect(() => {
     const subscription = watch(value => handleUpdateSession(value))
@@ -42,20 +42,22 @@ export default function AssessmentBody({ children, session }: AssessmentBodyProp
       </Stack>
       <Box sx={{ mt: 4 }}>{children}</Box>
 
-      <Box display='flex' justifyContent='flex-end' my={4}>
-        <Button
-          variant='contained'
-          disableElevation
-          sx={{
-            color: '#fff',
-          }}
-          color='primary'
-          size='medium'
-          onClick={handleAssessmentSubmit}
-        >
-          Trimite
-        </Button>
-      </Box>
+      {session.status !== 'finished' && (
+        <Box display='flex' justifyContent='flex-end' my={4}>
+          <Button
+            variant='contained'
+            disableElevation
+            sx={{
+              color: '#fff',
+            }}
+            color='primary'
+            size='medium'
+            onClick={handleAssessmentSubmit}
+          >
+            Trimite
+          </Button>
+        </Box>
+      )}
     </FormProvider>
   )
 }

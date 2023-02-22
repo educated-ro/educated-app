@@ -19,8 +19,9 @@ import CloseIcon from '@mui/icons-material/Close'
 import MenuIcon from '@mui/icons-material/Menu'
 import UserAvatarButton from './UserAvatarButton'
 import Menus from '@/components/Layout/contants'
-import { useSession } from 'next-auth/react'
 import useUserSession from '@/hooks/useUserSession'
+import { usePathname } from 'next/navigation'
+import { getPageTitleAndDescription } from '@/utils/page'
 
 export type GeneralLayoutProps = {
   children: ReactNode
@@ -29,12 +30,15 @@ export type GeneralLayoutProps = {
 export default function GeneralLayout({ children }: GeneralLayoutProps) {
   const [openDrawer, setOpenDrawer] = useState(false)
   const { role, image } = useUserSession()
+  const pathname = usePathname()
 
   const menu = Menus.get(role)
 
   if (!menu) return null
 
   const handleToggleDrawer = () => setOpenDrawer(prev => !prev)
+
+  const [title, description] = getPageTitleAndDescription(pathname)
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -61,8 +65,8 @@ export default function GeneralLayout({ children }: GeneralLayoutProps) {
       <Box component='main' sx={{ flexGrow: 1, mx: { sm: 4, xs: 0 }, maxWidth: '100%' }}>
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between', my: 3, alignItems: 'center', mb: 10 }}>
           <Box sx={{ fontWeight: 600, display: { xs: 'none', sm: 'block' } }}>
-            <Typography variant='h6'>Assessments</Typography>
-            <Typography>See your personal assessments here!</Typography>
+            <Typography variant='h6'>{title}</Typography>
+            <Typography>{description}</Typography>
           </Box>
 
           <IconButton onClick={handleToggleDrawer} sx={{ display: { xs: 'block', sm: 'none' } }}>

@@ -32,3 +32,9 @@ export const canViewAssessment = (status: string, role: string) => {
 
   return true
 }
+
+export const getGaugeGradientByGrade = (grade: number): [start: string, end: string] => {
+  if (grade > 50) return ['#4CA6D7', '#2E67D5']
+
+  return ['#4CA6D7', '#2E67D5']
+}
